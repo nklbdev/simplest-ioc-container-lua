@@ -9,10 +9,7 @@ end
 
 function SimplestIoCContainer:resolve(key)
     local binding = self.bindings[key]
-
-    if not binding then
-        error(string.format("IoC: Cannot resolve key \"%s\"", tostring(key)))
-    end
+    assert(binding ~= nil, string.format("IoC: Cannot resolve key \"%s\"", tostring(key)))
 
     if binding.isSingleInstance then
         if binding.lastResolvedInstance then
@@ -27,15 +24,9 @@ function SimplestIoCContainer:resolve(key)
 end
 
 function SimplestIoCContainer:bind(key, resolvingFunction, isSingleInstance)
-    if key == nil then
-        error("IoC: Key is nil")
-    end
-    if self.bindings[key] then
-        error(string.format("IoC: Key \"%s\" is already present", tostring(key)))
-    end
-    if resolvingFunction == nil then
-        error("IoC: ResolvingFunction is nil")
-    end
+    assert(key ~= nil, "IoC: Key is nil")
+    assert(self.bindings[key] == nil, string.format("IoC: Key \"%s\" is already present", tostring(key)))
+    assert(resolvingFunction ~= nil, "IoC: ResolvingFunction is nil")
     assert(type(resolvingFunction) == "function", "IoC: ResolvingFunction is not a function")
 
     self.bindings[key] = {
