@@ -2,7 +2,7 @@
 Just simplest IoC container on Lua
 
 usage:
-```
+```lua
 require("simplestIoCContainer")
 
 local container = SimplestIoCContainer.new()
