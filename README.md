@@ -24,3 +24,24 @@ print(a.b.." "..a.c.." "..a.d)
 ```
 will print:
 BBBBBB CCCCCCCC asdfsdf
+
+or in object-oriented manner:
+
+```lua
+require("simplestIoCContainer")
+require("thor")
+require("mjolnir")
+
+local container = SimplestIoCContainer.new()
+
+container:bind("God", function(ctr)
+    return Thor.new(ctr:resolve("Hammer"))
+end, true)
+
+container:bind("Hammer", function(ctr)
+    return Mjolnir.new()
+end, true)
+
+local god = container:resolve("God")
+print(god.weapon.name)
+```
