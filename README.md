@@ -22,3 +22,5 @@ end, true)
 local a = container:resolve("a")
 print(a.b.." "..a.c.." "..a.d)
 ```
+will print:
+BBBBBB CCCCCCCC asdfsdf
