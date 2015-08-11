@@ -1,4 +1,4 @@
-# SimplestIoCContainer
+# SimplestIoCContainerLua
 Just simplest IoC container on Lua
 
 usage:
