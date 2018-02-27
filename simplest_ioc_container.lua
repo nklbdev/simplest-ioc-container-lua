@@ -1,13 +1,13 @@
-SimplestIoCContainer = {}
-SimplestIoCContainer.__index = SimplestIoCContainer
+local T = {}
+T.__index = T
 
-function SimplestIoCContainer.new()
-    local self = setmetatable({}, SimplestIoCContainer)
+function T.new()
+    local self = setmetatable({}, T)
     self.bindings = {}
     return self
 end
 
-function SimplestIoCContainer:resolve(key)
+function T:resolve(key)
     local binding = self.bindings[key]
     assert(binding ~= nil, string.format("IoC: Cannot resolve key \"%s\"", tostring(key)))
 
@@ -23,7 +23,7 @@ function SimplestIoCContainer:resolve(key)
     end
 end
 
-function SimplestIoCContainer:bind(key, resolvingFunction, isSingleInstance)
+function T:bind(key, resolvingFunction, isSingleInstance)
     assert(key ~= nil, "IoC: Key is nil")
     assert(self.bindings[key] == nil, string.format("IoC: Key \"%s\" is already present", tostring(key)))
     assert(resolvingFunction ~= nil, "IoC: ResolvingFunction is nil")
@@ -34,3 +34,5 @@ function SimplestIoCContainer:bind(key, resolvingFunction, isSingleInstance)
         isSingleInstance = isSingleInstance or false
     }
 end
+
+return T

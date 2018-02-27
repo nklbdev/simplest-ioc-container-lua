@@ -3,9 +3,9 @@ Just simplest IoC container on Lua
 
 usage:
 ```lua
-require("simplestIoCContainer")
+local SimplestIocContainer = require("simplest_ioc_container")
 
-local container = SimplestIoCContainer.new()
+local container = SimplestIocContainer.new()
 
 container:bind("a", function(ctr)
     return { b = ctr:resolve("b"), c = ctr:resolve("c"), d = "asdfsdf"}
@@ -28,11 +28,11 @@ BBBBBB CCCCCCCC asdfsdf
 or in object-oriented manner:
 
 ```lua
-require("simplestIoCContainer")
-require("thor")
-require("mjolnir")
+local SimplestIocContainer = require("simplest_ioc_container")
+local Thor = require("thor")
+local Mjolnir = require("mjolnir")
 
-local container = SimplestIoCContainer.new()
+local container = SimplestIocContainer.new()
 
 container:bind("God", function(ctr)
     return Thor.new(ctr:resolve("Hammer"))
