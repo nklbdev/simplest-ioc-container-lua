@@ -45,3 +45,4 @@ end, true)
 local god = container:resolve("God")
 print(god.weapon.name)
 ```
+You can use any values as keys, for example, classes, as is implemented in other languages.
